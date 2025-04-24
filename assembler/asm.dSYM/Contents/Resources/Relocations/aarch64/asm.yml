@@ -1,0 +1,12 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     asm
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z6assignPc, symObjAddr: 0x0, symBinAddr: 0x100003B70, symSize: 0x110 }
+  - { offsetInCU: 0x3F, offset: 0x3F, size: 0x8, addend: 0x0, symName: _line, symObjAddr: 0x13A0, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x84, offset: 0x84, size: 0x8, addend: 0x0, symName: __Z6assignPc, symObjAddr: 0x0, symBinAddr: 0x100003B70, symSize: 0x110 }
+  - { offsetInCU: 0x104, offset: 0x104, size: 0x8, addend: 0x0, symName: __Z12translateArgPc, symObjAddr: 0x110, symBinAddr: 0x100003C80, symSize: 0xA8 }
+  - { offsetInCU: 0x176, offset: 0x176, size: 0x8, addend: 0x0, symName: __Z14translateInstrPc, symObjAddr: 0x1B8, symBinAddr: 0x100003D28, symSize: 0x14 }
+  - { offsetInCU: 0x1A2, offset: 0x1A2, size: 0x8, addend: 0x0, symName: __Z6outputv, symObjAddr: 0x1CC, symBinAddr: 0x100003D3C, symSize: 0x8 }
+  - { offsetInCU: 0x1BF, offset: 0x1BF, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1D4, symBinAddr: 0x100003D44, symSize: 0x194 }
+...
