@@ -2,6 +2,8 @@
 #include <string.h> 
 #include <stdio.h>
 
+char * instructionsLower[7] = {"jmp", "jrp","ldn","sto","sub","sub","cmp"}; 
+char * instructionsUpper[7] = {"JMP", "JRP","LDN","STO","SUB","SUB","CMP"}; 
 struct instr_t line; 
 //main 
 int assign(char *input){
@@ -34,14 +36,22 @@ int assign(char *input){
         line.arg = 0; 
     }
 
+    line.instr = translateInstr(instrToken); 
+    //printf("%d\n",line.instr);
 
     return 0;
 }
 
 //translate line
 int translateInstr(char * instrLine){
-
-    return 0;
+    //int result = 0;
+    for (int i = 0; i < 7; i++){
+        if (strcmp(instrLine,instructionsLower[i]) == 0 || strcmp(instrLine,instructionsUpper[i]) == 0){
+             //printf("%d\n",i);
+            return i; 
+        }
+    }
+    return -1; //error
 }
 
 int translateArg(char * instrArg){
