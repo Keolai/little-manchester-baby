@@ -2,13 +2,12 @@
 triple:          'arm64-apple-darwin'
 binary-path:     asm
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z6assignPc, symObjAddr: 0x0, symBinAddr: 0x100003A7C, symSize: 0x110 }
-  - { offsetInCU: 0x52, offset: 0x52, size: 0x8, addend: 0x0, symName: _instructionsLower, symObjAddr: 0x4A8, symBinAddr: 0x100008000, symSize: 0x0 }
-  - { offsetInCU: 0x78, offset: 0x78, size: 0x8, addend: 0x0, symName: _instructionsUpper, symObjAddr: 0x4E0, symBinAddr: 0x100008038, symSize: 0x0 }
-  - { offsetInCU: 0x8D, offset: 0x8D, size: 0x8, addend: 0x0, symName: _line, symObjAddr: 0x16F4, symBinAddr: 0x100008070, symSize: 0x0 }
-  - { offsetInCU: 0xBF, offset: 0xBF, size: 0x8, addend: 0x0, symName: __Z6assignPc, symObjAddr: 0x0, symBinAddr: 0x100003A7C, symSize: 0x110 }
-  - { offsetInCU: 0x13F, offset: 0x13F, size: 0x8, addend: 0x0, symName: __Z12translateArgPc, symObjAddr: 0x110, symBinAddr: 0x100003B8C, symSize: 0xA8 }
-  - { offsetInCU: 0x1B1, offset: 0x1B1, size: 0x8, addend: 0x0, symName: __Z14translateInstrPc, symObjAddr: 0x1B8, symBinAddr: 0x100003C34, symSize: 0xD4 }
-  - { offsetInCU: 0x1F9, offset: 0x1F9, size: 0x8, addend: 0x0, symName: __Z6outputv, symObjAddr: 0x28C, symBinAddr: 0x100003D08, symSize: 0x8 }
-  - { offsetInCU: 0x216, offset: 0x216, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x294, symBinAddr: 0x100003D10, symSize: 0x194 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z6assignPc, symObjAddr: 0x0, symBinAddr: 0x1000039B4, symSize: 0x1AC }
+  - { offsetInCU: 0x52, offset: 0x52, size: 0x8, addend: 0x0, symName: _instructionsUpper, symObjAddr: 0x560, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x78, offset: 0x78, size: 0x8, addend: 0x0, symName: _line, symObjAddr: 0x1754, symBinAddr: 0x100008038, symSize: 0x0 }
+  - { offsetInCU: 0xAA, offset: 0xAA, size: 0x8, addend: 0x0, symName: __Z6assignPc, symObjAddr: 0x0, symBinAddr: 0x1000039B4, symSize: 0x1AC }
+  - { offsetInCU: 0x12A, offset: 0x12A, size: 0x8, addend: 0x0, symName: __Z12translateArgPc, symObjAddr: 0x1AC, symBinAddr: 0x100003B60, symSize: 0xA8 }
+  - { offsetInCU: 0x19C, offset: 0x19C, size: 0x8, addend: 0x0, symName: __Z14translateInstrPc, symObjAddr: 0x254, symBinAddr: 0x100003C08, symSize: 0x10C }
+  - { offsetInCU: 0x200, offset: 0x200, size: 0x8, addend: 0x0, symName: __Z6outputv, symObjAddr: 0x360, symBinAddr: 0x100003D14, symSize: 0x8 }
+  - { offsetInCU: 0x21D, offset: 0x21D, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x368, symBinAddr: 0x100003D1C, symSize: 0x194 }
 ...
