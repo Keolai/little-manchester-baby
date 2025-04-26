@@ -7,7 +7,7 @@ typedef struct instr_t
     int arg; //argument
 };
 
-int assign(char *);
+int assign(char *,int, bool*);
 int translateInstr(char *);
 int translateArg(char *);
 int output();
