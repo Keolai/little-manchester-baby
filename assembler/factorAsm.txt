@@ -18,7 +18,7 @@ STO 27
 LDN 27
 STO 26
 JMP 22
-STP
+num -3
 num 1
 num 4 
 num -262144

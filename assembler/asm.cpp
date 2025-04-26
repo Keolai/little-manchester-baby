@@ -4,10 +4,8 @@
 #include <stdlib.h>
 #define INSTRNUM 9
 
-//char * instructionsLower[8] = {"jmp", "jrp","ldn","sto","sub","sub","cmp"}; 
 char * instructionsUpper[INSTRNUM] = {"JMP", "JRP","LDN","STO","SUB","SUB","CMP","STP","NUM"}; 
 struct instr_t line; 
-//main 
 int assign(char *input){
 
     char* delimeter = " ";
@@ -104,30 +102,6 @@ int output(){
     } else {
     finalInstr = line.arg; 
     }
-
-    // switch(line.instr){
-    //     case 0: // jump
-      
-    //     break;
-    // case 1: // jrp
-      
-    //     break;
-    // case 2: // ldn
-    //     //baby.acc = -mem;
-    //     break;
-    // case 3: // sto
-       
-    //     break;
-    // case 4:
-    // case 5: // sub
-      
-    //     break;
-    // case 6: // cmp
-       
-    //     break;
-    // case 7: // stop
-       
-    //     break;
 
     return finalInstr;
 }

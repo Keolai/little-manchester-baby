@@ -44,8 +44,12 @@ int main(int argc, char *argv[])
         int output = assign(line);
        // printf("%d\n",output);
         intToBinaryString(output,buffer);
+        if (i < 31){
         buffer[32] = '\n';
         buffer[33] = 0;
+        } else {
+        buffer[32] == 0; 
+        }
        // reverseString(buffer);
         fprintf(fptr, buffer);
         printf(buffer);
@@ -55,7 +59,11 @@ int main(int argc, char *argv[])
     if (i < 31){
         for (int j = 0; j < 32-i;j++){
             //fill out rest of program with 0
+            if (j != 31 - i){
             fprintf(fptr,"00000000000000000000000000000000\n");
+            } else {
+            fprintf(fptr,"00000000000000000000000000000000");
+            }
         }
     }
     for (int j = 0; j < 64; j++)
