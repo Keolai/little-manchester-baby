@@ -56,7 +56,14 @@ int assign(char *input, int lineNum, bool* error)
         int tmp = checkTable(argToken,&notPresent);
 
         if (notPresent){
-            line.arg = translateArg(argToken);
+            //bool error = false;
+            //need to check if its even a number
+            bool argError = false;
+            line.arg = translateArg(argToken, &argError);
+            if (argError){
+                *error = true;
+                return -1;
+            }
         } else {
             line.arg = tmp;
         }
@@ -70,7 +77,6 @@ int assign(char *input, int lineNum, bool* error)
     line.instr = translateInstr(instrToken);
     if (line.instr == -1)
     { 
-        printf("error found in line %d\n", lineNum);  
         *error = true;
         return -1; // return error
     }
@@ -101,7 +107,7 @@ int translateInstr(char *instrLine)
     return -1; // error
 }
 
-int translateArg(char *instrArg)
+int translateArg(char *instrArg, bool* error)
 {
     //if number is base 10
     int sign = 1;
@@ -116,7 +122,13 @@ int translateArg(char *instrArg)
     int power = 1;
     for (int i = length; i > 0; i--)
     {
-        total = total + ((int)arg[i - 1] - 48) * (power);
+        int tmp = ((int)arg[i - 1] - 48);
+        if (tmp < 0 || tmp > 9){
+            //throw error
+            printf("invalid number\n");
+            *error = true;
+        }
+        total = total + tmp * (power);
         power *= 10;
     }
     // printf("%d\n",total);
@@ -179,18 +191,19 @@ void addSymbol(char * input, bool * error){
             }
         }
     }
-   
-   int value = translateArg(val);
+   int value = translateArg(val, error);
    placeIntoTable(name, value);
 
 }
 
 int placeIntoTable(char *name, int val){
     for (int i = 0; i < 32; i++){
-        symbol_t curSymbol = symbols[i];
-        if (strlen(curSymbol.name) == 0){ //unused
-            copyStr(curSymbol.name, name);
-            curSymbol.val = val; 
+        if (symbols[i].used == false){ //unused
+            copyStr(symbols[i].name, name);
+            symbols[i].val = val; 
+            symbols[i].used = true;
+            // printf(curSymbol.name);
+            // printf(" %d\n", i);
             return 0;
         }
     }
@@ -200,18 +213,21 @@ int placeIntoTable(char *name, int val){
 void copyStr(char*dest, char*start){
     for (int i = 0; i < strlen(start); i++){
         dest[i] = start[i]; 
+       //printf("%c\n", dest[i]);
     }
 }
 
 int checkTable(char* name, bool* notPresent){
-    // printf("checking name");
+    // printf("checking name: ");
     // printf(name);
+    // printf("\n");
     for (int i = 0; i < 32; i++){
-        symbol_t curSymbol = symbols[i];
-        if (strcmp(curSymbol.name, name)){
-            return curSymbol.val;
+       // symbol_t curSymbol = symbols[i];
+       // printf(curSymbol.name);
+        if (strcmp(symbols[i].name, name) == 0){
+            return symbols[i].val;
         }
     }
+     *notPresent = true; 
     return -1; 
-    *notPresent = true; 
 }

@@ -44,7 +44,8 @@ int main(int argc, char *argv[])
              fclose(file);
              fclose(fptr);
             remove(outputName);
-            printf("aborting...\n");
+            printf("error found in line: %d\n", i + 1);  
+            printf("\naborting...\n");
         }
         // printf("%d\n",output);
         intToBinaryString(output, buffer);
@@ -64,6 +65,9 @@ int main(int argc, char *argv[])
         } else if (line[0] == '#'){
             //define line
             addSymbol(line, &error);
+            if (error == true){
+                printf("invalid symbol found, aborting...\n");
+            }
         }
 
 
