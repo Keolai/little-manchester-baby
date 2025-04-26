@@ -33,10 +33,11 @@ int main(int argc, char *argv[])
     // Open a file in writing mode
     fptr = fopen(outputName, "w");
 
-    while (fgets(line, sizeof(line), file))
+    while (fgets(line, sizeof(line), file) && i < 32)
     {
         // Remove newline character if present
         line[strcspn(line, "\n")] = '\0';
+        if (line[0] != ';' && strlen(line) > 0 && line[0] != '#'){ //if not a comment or only newline
 
         int output = assign(line,i,&error);
         if (error){
@@ -54,12 +55,18 @@ int main(int argc, char *argv[])
         }
         else
         {
-            buffer[32] == 0;
+            buffer[32] = 0;
         }
         // reverseString(buffer);
         fprintf(fptr, buffer);
         // printf(buffer);
         i++;
+        } else if (line[0] == '#'){
+            //define line
+            addSymbol(line, &error);
+        }
+
+
     }
 
     if (i < 31)

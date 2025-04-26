@@ -6,10 +6,13 @@
 
 char *instructionsUpper[INSTRNUM] = {"JMP", "JRP", "LDN", "STO", "SUB", "SUB", "CMP", "STP", "NUM"};
 struct instr_t line;
+struct symbol_t symbols[32]; 
+
+static char *delimeter = " ";
+
+
 int assign(char *input, int lineNum, bool* error)
 {
-
-    char *delimeter = " ";
 
     char *instrToken;
     char *argToken;
@@ -49,7 +52,14 @@ int assign(char *input, int lineNum, bool* error)
 
     if (argToken != NULL)
     {
-        line.arg = translateArg(argToken);
+        bool notPresent = false;
+        int tmp = checkTable(argToken,&notPresent);
+
+        if (notPresent){
+            line.arg = translateArg(argToken);
+        } else {
+            line.arg = tmp;
+        }
        // printf("%d\n",line.arg);
     }
     else
@@ -93,6 +103,7 @@ int translateInstr(char *instrLine)
 
 int translateArg(char *instrArg)
 {
+    //if number is base 10
     int sign = 1;
     char *arg = instrArg;
     if (instrArg[0] == '-')
@@ -128,4 +139,79 @@ int output()
     }
 
     return finalInstr;
+}
+
+void addSymbol(char * input, bool * error){
+    char *tmp;
+    char *name;
+    char *val;
+    tmp = strtok(input, delimeter);
+
+    if (strlen(tmp) > 1){ // #define
+         for (int i = 0; i < 2; i++)
+        {
+            tmp = strtok(NULL, delimeter);
+             //printf(tmp);
+            switch (i)
+            {
+            case 0:
+                name = tmp;
+                break;
+            case 1:
+                val = tmp;
+                break;
+            }
+        }
+
+    } else { //# define
+         for (int i = 0; i < 3; i++)
+        {
+            tmp = strtok(NULL, delimeter);
+             //printf(tmp);
+            switch (i)
+            {
+            case 1:
+                name = tmp;
+                break;
+            case 2:
+                val = tmp;
+                break;
+            }
+        }
+    }
+   
+   int value = translateArg(val);
+   placeIntoTable(name, value);
+
+}
+
+int placeIntoTable(char *name, int val){
+    for (int i = 0; i < 32; i++){
+        symbol_t curSymbol = symbols[i];
+        if (strlen(curSymbol.name) == 0){ //unused
+            copyStr(curSymbol.name, name);
+            curSymbol.val = val; 
+            return 0;
+        }
+    }
+    return -1; //no room left
+}
+
+void copyStr(char*dest, char*start){
+    for (int i = 0; i < strlen(start); i++){
+        dest[i] = start[i]; 
+    }
+}
+
+int checkTable(char* name, bool* notPresent){
+    // printf("checking name");
+    // printf(name);
+    for (int i = 0; i < 32; i++){
+        symbol_t curSymbol = symbols[i];
+        if (strcmp(curSymbol.name, name)){
+            return curSymbol.val;
+        }
+    }
+    return -1; 
+    *notPresent = true; 
 }

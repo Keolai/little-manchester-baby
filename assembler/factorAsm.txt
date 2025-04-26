@@ -1,3 +1,5 @@
+; factor program
+
 JMP 0
 LDN 24
 STO 26

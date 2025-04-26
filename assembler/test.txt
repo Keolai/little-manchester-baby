@@ -1,1 +1,5 @@
-jrp 25
+# define hi 80
+#define lol 80
+jrp hi
+jrp 80
+jrp lol
