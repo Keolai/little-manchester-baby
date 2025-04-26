@@ -2,10 +2,10 @@
 #include <string.h> 
 #include <stdio.h>
 #include <stdlib.h>
-#define INSTRNUM 8
+#define INSTRNUM 9
 
 //char * instructionsLower[8] = {"jmp", "jrp","ldn","sto","sub","sub","cmp"}; 
-char * instructionsUpper[INSTRNUM] = {"JMP", "JRP","LDN","STO","SUB","SUB","CMP","STP"}; 
+char * instructionsUpper[INSTRNUM] = {"JMP", "JRP","LDN","STO","SUB","SUB","CMP","STP","NUM"}; 
 struct instr_t line; 
 //main 
 int assign(char *input){
@@ -15,6 +15,9 @@ int assign(char *input){
     char * instrToken;
     char * argToken;
     char *tmp;
+
+    line.instr = 0; //clear them
+    line.arg = 0;
 
     tmp = strtok(input,delimeter);
 
@@ -53,7 +56,7 @@ int assign(char *input){
     }
     //printf("%d\n",line.instr);
 
-    return 0;
+    return output(); 
 }
 
 //translate line
@@ -74,23 +77,34 @@ int translateInstr(char * instrLine){
 }
 
 int translateArg(char * instrArg){
-    int length = strlen(instrArg);
+    int sign = 1;
+    char * arg = instrArg;
+    if (instrArg[0] == '-'){
+        sign = -1;
+        arg +=1;
+    }
+    int length = strlen(arg);
     int total = 0;
     int power = 1; 
     for (int i = length; i > 0; i--){
-        total = total + ((int)instrArg[i - 1] - 48)* (power);
+        total = total + ((int)arg[i - 1] - 48)* (power);
         power *= 10; 
     }
    // printf("%d\n",total);
-    return total;
+    return total * sign;
 }
 
 //return binary code
 int output(){
 
     int finalInstr = 0; 
+    if (line.instr != 8){//NUM
     finalInstr += line.instr << 13; 
     finalInstr += line.arg; 
+    } else {
+    finalInstr = line.arg; 
+    }
+
     // switch(line.instr){
     //     case 0: // jump
       
@@ -115,5 +129,5 @@ int output(){
        
     //     break;
 
-    return 0;
+    return finalInstr;
 }
