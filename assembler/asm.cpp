@@ -6,12 +6,11 @@
 
 char *instructionsUpper[INSTRNUM] = {"JMP", "JRP", "LDN", "STO", "SUB", "SUB", "CMP", "STP", "NUM"};
 struct instr_t line;
-struct symbol_t symbols[32]; 
+struct symbol_t symbols[32];
 
 static char *delimeter = " ";
 
-
-int assign(char *input, int lineNum, bool* error)
+int assign(char *input, int lineNum, bool *error)
 {
 
     char *instrToken;
@@ -30,7 +29,7 @@ int assign(char *input, int lineNum, bool* error)
         for (int i = 0; i < 2; i++)
         {
             tmp = strtok(NULL, delimeter);
-             printf(tmp);
+            printf(tmp);
             switch (i)
             {
             case 0:
@@ -53,21 +52,25 @@ int assign(char *input, int lineNum, bool* error)
     if (argToken != NULL)
     {
         bool notPresent = false;
-        int tmp = checkTable(argToken,&notPresent);
+        int tmp = checkTable(argToken, &notPresent);
 
-        if (notPresent){
-            //bool error = false;
-            //need to check if its even a number
+        if (notPresent)
+        {
+            // bool error = false;
+            // need to check if its even a number
             bool argError = false;
             line.arg = translateArg(argToken, &argError);
-            if (argError){
+            if (argError)
+            {
                 *error = true;
                 return -1;
             }
-        } else {
+        }
+        else
+        {
             line.arg = tmp;
         }
-       // printf("%d\n",line.arg);
+        // printf("%d\n",line.arg);
     }
     else
     {
@@ -76,11 +79,11 @@ int assign(char *input, int lineNum, bool* error)
 
     line.instr = translateInstr(instrToken);
     if (line.instr == -1)
-    { 
+    {
         *error = true;
         return -1; // return error
     }
-    //printf("%d\n",line.instr);
+    // printf("%d\n",line.instr);
 
     return output();
 }
@@ -107,9 +110,9 @@ int translateInstr(char *instrLine)
     return -1; // error
 }
 
-int translateArg(char *instrArg, bool* error)
+int translateArg(char *instrArg, bool *error)
 {
-    //if number is base 10
+    // if number is base 10
     int sign = 1;
     char *arg = instrArg;
     if (instrArg[0] == '-')
@@ -123,9 +126,10 @@ int translateArg(char *instrArg, bool* error)
     for (int i = length; i > 0; i--)
     {
         int tmp = ((int)arg[i - 1] - 48);
-        if (tmp < 0 || tmp > 9){
-            //throw error
-            printf("invalid number\n");
+        if (tmp < 0 || tmp > 9)
+        {
+            // throw error
+            // printf("invalid number\n");
             *error = true;
         }
         total = total + tmp * (power);
@@ -153,35 +157,54 @@ int output()
     return finalInstr;
 }
 
-void addSymbol(char * input, bool * error){
+void addSymbol(char *input, bool *error)
+{
     char *tmp;
     char *name;
     char *val;
+    char *define = "define";
     tmp = strtok(input, delimeter);
-
-    if (strlen(tmp) > 1){ // #define
-         for (int i = 0; i < 2; i++)
+    if (tmp != NULL && strlen(tmp) > 1)
+    {   // #define
+        // printf(tmp + 1);
+        if (strcmp((tmp + 1), define) == 0)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                tmp = strtok(NULL, delimeter);
+                // printf(tmp);
+                switch (i)
+                {
+                case 0:
+                    name = tmp;
+                    break;
+                case 1:
+                    val = tmp;
+                    break;
+                }
+            }
+        }
+        else
+        { // #notDefine
+            *error = true;
+            return;
+        }
+    }
+    else
+    { // # define
+        for (int i = 0; i < 3; i++)
         {
             tmp = strtok(NULL, delimeter);
-             //printf(tmp);
+            // printf(tmp);
             switch (i)
             {
             case 0:
-                name = tmp;
+                if (strcmp(define, tmp) != 0)
+                {
+                    *error = true;
+                    return;
+                }
                 break;
-            case 1:
-                val = tmp;
-                break;
-            }
-        }
-
-    } else { //# define
-         for (int i = 0; i < 3; i++)
-        {
-            tmp = strtok(NULL, delimeter);
-             //printf(tmp);
-            switch (i)
-            {
             case 1:
                 name = tmp;
                 break;
@@ -191,43 +214,48 @@ void addSymbol(char * input, bool * error){
             }
         }
     }
-   int value = translateArg(val, error);
-   placeIntoTable(name, value);
-
+    int value = translateArg(val, error);
+    placeIntoTable(name, value);
 }
 
-int placeIntoTable(char *name, int val){
-    for (int i = 0; i < 32; i++){
-        if (symbols[i].used == false){ //unused
+int placeIntoTable(char *name, int val)
+{
+    for (int i = 0; i < 32; i++)
+    {
+        if (symbols[i].used == false)
+        { // unused
             copyStr(symbols[i].name, name);
-            symbols[i].val = val; 
+            symbols[i].val = val;
             symbols[i].used = true;
             // printf(curSymbol.name);
             // printf(" %d\n", i);
             return 0;
         }
     }
-    return -1; //no room left
+    return -1; // no room left
 }
 
-void copyStr(char*dest, char*start){
-    for (int i = 0; i < strlen(start); i++){
-        dest[i] = start[i]; 
-       //printf("%c\n", dest[i]);
+void copyStr(char *dest, char *start)
+{
+    for (int i = 0; i < strlen(start); i++)
+    {
+        dest[i] = start[i];
+        // printf("%c\n", dest[i]);
     }
 }
 
-int checkTable(char* name, bool* notPresent){
+int checkTable(char *name, bool *notPresent)
+{
     // printf("checking name: ");
     // printf(name);
     // printf("\n");
-    for (int i = 0; i < 32; i++){
-       // symbol_t curSymbol = symbols[i];
-       // printf(curSymbol.name);
-        if (strcmp(symbols[i].name, name) == 0){
+    for (int i = 0; i < 32; i++)
+    {
+        if (strcmp(symbols[i].name, name) == 0)
+        {
             return symbols[i].val;
         }
     }
-     *notPresent = true; 
-    return -1; 
+    *notPresent = true;
+    return -1;
 }
