@@ -87,6 +87,7 @@ int step()
         printf("pc went out of range\n");
         return 1;
     }
+    return 0;
 }
 
 /* HELPERS */
@@ -102,4 +103,5 @@ int program_inject(int *arr)
         }
         // printf("%d\n",baby.mem[i]);
     }
+    return 0;
 }
