@@ -1,0 +1,2 @@
+;bad instruction test NOT REAL PROGRAM
+hi

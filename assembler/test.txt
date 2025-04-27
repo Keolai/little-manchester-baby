@@ -1,2 +1,0 @@
-# define hi 80
-#not lol 80

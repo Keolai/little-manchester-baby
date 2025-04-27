@@ -1,0 +1,4 @@
+;tests define functionality NOT REAL PROGRAM
+# define hi 80
+jrp hi
+jrp 80
