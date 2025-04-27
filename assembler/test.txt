@@ -1,7 +1,2 @@
 # define hi 80
-#define lol 80
-jrp hi
-jrp 80
-jrp lol
-jrp 80
-jrp not
+#not lol 80

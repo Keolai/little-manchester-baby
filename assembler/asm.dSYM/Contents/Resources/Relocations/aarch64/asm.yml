@@ -2,19 +2,19 @@
 triple:          'arm64-apple-darwin'
 binary-path:     asm
 relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z6assignPciPb, symObjAddr: 0x0, symBinAddr: 0x1000030EC, symSize: 0x21C }
-  - { offsetInCU: 0x52, offset: 0x52, size: 0x8, addend: 0x0, symName: _instructionsUpper, symObjAddr: 0xE08, symBinAddr: 0x100008000, symSize: 0x0 }
-  - { offsetInCU: 0x78, offset: 0x78, size: 0x8, addend: 0x0, symName: _line, symObjAddr: 0x2CE8, symBinAddr: 0x100008050, symSize: 0x0 }
-  - { offsetInCU: 0xB6, offset: 0xB6, size: 0x8, addend: 0x0, symName: _symbols, symObjAddr: 0x2CF0, symBinAddr: 0x100008058, symSize: 0x0 }
-  - { offsetInCU: 0x118, offset: 0x118, size: 0x8, addend: 0x0, symName: __ZL9delimeter, symObjAddr: 0xE50, symBinAddr: 0x100008048, symSize: 0x0 }
-  - { offsetInCU: 0x125, offset: 0x125, size: 0x8, addend: 0x0, symName: __Z6assignPciPb, symObjAddr: 0x0, symBinAddr: 0x1000030EC, symSize: 0x21C }
-  - { offsetInCU: 0x1F9, offset: 0x1F9, size: 0x8, addend: 0x0, symName: __Z10checkTablePcPb, symObjAddr: 0x21C, symBinAddr: 0x100003308, symSize: 0xC0 }
-  - { offsetInCU: 0x24F, offset: 0x24F, size: 0x8, addend: 0x0, symName: __Z12translateArgPcPb, symObjAddr: 0x2DC, symBinAddr: 0x1000033C8, symSize: 0x140 }
-  - { offsetInCU: 0x307, offset: 0x307, size: 0x8, addend: 0x0, symName: __Z14translateInstrPc, symObjAddr: 0x41C, symBinAddr: 0x100003508, symSize: 0x10C }
-  - { offsetInCU: 0x36B, offset: 0x36B, size: 0x8, addend: 0x0, symName: __Z6outputv, symObjAddr: 0x528, symBinAddr: 0x100003614, symSize: 0x74 }
-  - { offsetInCU: 0x397, offset: 0x397, size: 0x8, addend: 0x0, symName: __Z9addSymbolPcPb, symObjAddr: 0x59C, symBinAddr: 0x100003688, symSize: 0x180 }
-  - { offsetInCU: 0x43D, offset: 0x43D, size: 0x8, addend: 0x0, symName: __Z14placeIntoTablePci, symObjAddr: 0x71C, symBinAddr: 0x100003808, symSize: 0xF0 }
-  - { offsetInCU: 0x493, offset: 0x493, size: 0x8, addend: 0x0, symName: __Z7copyStrPcS_, symObjAddr: 0x80C, symBinAddr: 0x1000038F8, symSize: 0x80 }
-  - { offsetInCU: 0x4E5, offset: 0x4E5, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x88C, symBinAddr: 0x100003978, symSize: 0x3B4 }
-  - { offsetInCU: 0x5E5, offset: 0x5E5, size: 0x8, addend: 0x0, symName: __Z17intToBinaryStringiPc, symObjAddr: 0xC40, symBinAddr: 0x100003D2C, symSize: 0xC4 }
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: __Z6assignPciPb, symObjAddr: 0x0, symBinAddr: 0x10000306C, symSize: 0x21C }
+  - { offsetInCU: 0x52, offset: 0x52, size: 0x8, addend: 0x0, symName: _instructionsUpper, symObjAddr: 0xE88, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x78, offset: 0x78, size: 0x8, addend: 0x0, symName: _line, symObjAddr: 0x2DC8, symBinAddr: 0x100008050, symSize: 0x0 }
+  - { offsetInCU: 0xB6, offset: 0xB6, size: 0x8, addend: 0x0, symName: _symbols, symObjAddr: 0x2DD0, symBinAddr: 0x100008058, symSize: 0x0 }
+  - { offsetInCU: 0x118, offset: 0x118, size: 0x8, addend: 0x0, symName: __ZL9delimeter, symObjAddr: 0xED0, symBinAddr: 0x100008048, symSize: 0x0 }
+  - { offsetInCU: 0x125, offset: 0x125, size: 0x8, addend: 0x0, symName: __Z6assignPciPb, symObjAddr: 0x0, symBinAddr: 0x10000306C, symSize: 0x21C }
+  - { offsetInCU: 0x1F9, offset: 0x1F9, size: 0x8, addend: 0x0, symName: __Z10checkTablePcPb, symObjAddr: 0x21C, symBinAddr: 0x100003288, symSize: 0xC0 }
+  - { offsetInCU: 0x24F, offset: 0x24F, size: 0x8, addend: 0x0, symName: __Z12translateArgPcPb, symObjAddr: 0x2DC, symBinAddr: 0x100003348, symSize: 0x134 }
+  - { offsetInCU: 0x307, offset: 0x307, size: 0x8, addend: 0x0, symName: __Z14translateInstrPc, symObjAddr: 0x410, symBinAddr: 0x10000347C, symSize: 0x10C }
+  - { offsetInCU: 0x36B, offset: 0x36B, size: 0x8, addend: 0x0, symName: __Z6outputv, symObjAddr: 0x51C, symBinAddr: 0x100003588, symSize: 0x74 }
+  - { offsetInCU: 0x397, offset: 0x397, size: 0x8, addend: 0x0, symName: __Z9addSymbolPcPb, symObjAddr: 0x590, symBinAddr: 0x1000035FC, symSize: 0x21C }
+  - { offsetInCU: 0x44B, offset: 0x44B, size: 0x8, addend: 0x0, symName: __Z14placeIntoTablePci, symObjAddr: 0x7AC, symBinAddr: 0x100003818, symSize: 0xF0 }
+  - { offsetInCU: 0x4A1, offset: 0x4A1, size: 0x8, addend: 0x0, symName: __Z7copyStrPcS_, symObjAddr: 0x89C, symBinAddr: 0x100003908, symSize: 0x80 }
+  - { offsetInCU: 0x4F3, offset: 0x4F3, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x91C, symBinAddr: 0x100003988, symSize: 0x3AC }
+  - { offsetInCU: 0x5F3, offset: 0x5F3, size: 0x8, addend: 0x0, symName: __Z17intToBinaryStringiPc, symObjAddr: 0xCC8, symBinAddr: 0x100003D34, symSize: 0xC4 }
 ...
