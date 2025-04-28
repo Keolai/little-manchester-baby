@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
     }
     for (int j = 0; j < 64; j++)
     {
-        // printf("%d\n",program[j]);
+        printf("%d\n",program[j]);
     }
     fclose(file);
 
